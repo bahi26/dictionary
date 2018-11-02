@@ -9,6 +9,7 @@ class dictionary
 public:
 	dictionary();
 	dictionary(std::string filename);
+	void test();
 	~dictionary();
 };
 
