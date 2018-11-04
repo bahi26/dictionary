@@ -9,7 +9,10 @@ class dictionary
 public:
 	dictionary();
 	dictionary(std::string filename);
+	void search(std::string board,std::string word);
+	void search(std::string board, std::string word,int index);
 	void test();
 	~dictionary();
+	
 };
 

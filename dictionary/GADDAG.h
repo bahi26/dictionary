@@ -23,7 +23,7 @@ class GADDAG
 {	
 public:
 	node* root;
-	std::vector<std::pair<std::string,int>> returnVector;
+	std::vector<std::pair<std::pair<std::string, std::string>,int>> returnVector;
 
 public:
 	GADDAG();

@@ -18,43 +18,66 @@ dictionary::dictionary(std::string filename)
 	}
 	
 }
-void dictionary::test()
+void dictionary::search(std::string board, std::string word)
 {
 	data.returnVector.clear();
+	int num = 1;
+	for (int i = 0; i < board.size(); ++i)
+	{
+		if (board[i] == ' ')
+			++num;
+		else
+			if (num > 0)
+			{
+				data.search(word, board, i, num - 1);
+				num = 0;
+			}
+	}
+}
+void dictionary::search(std::string board, std::string word,int index)
+{
+	data.returnVector.clear();
+	int num = 1;
+	for (int i = 0; i < board.size(); ++i)
+	{
+		if (board[i] == ' ')
+			++num;
+		else
+		{
+			if (num > 0 && i == index)
+			{
+				data.search(word, board, i, num - 1);
+				return;
+			}
+			num = 0;
+		}
+	}
+}
+void dictionary::test()
+{
+
 	std::string s1, s2, s3, s4,word="vE";
 	s1 = "  all  load a b ";
 	s2 = " all a  a  ca  ";
 	s3 = "all  ";
 	s4 = "a";
+
 	std::cout << "word 1" << std::endl;
-	data.search(word, s1, 2, 2);
-	data.search(word, s1, 7, 1);
-	data.search(word, s1, 12, 0);
-	data.search(word, s1, 14, 0);
+	search(s1, word);
 	for (int i = 0; i < data.returnVector.size(); ++i)
-		std::cout << data.returnVector[i].first << "  " << data.returnVector[i].second << "\\";
-	data.returnVector.clear();
+		std::cout << data.returnVector[i].first.first << "  " << data.returnVector[i].second << "\\";
 	std::cout << "word 2" << std::endl;
-	data.search(word, s2, 1, 1);
-	data.search(word, s2, 5, 0);
-	data.search(word, s2, 8, 1);
-	data.search(word, s2, 11, 1);
+	search(s2, word);
 	for (int i = 0; i < data.returnVector.size(); ++i)
-		std::cout << data.returnVector[i].first << " " << data.returnVector[i].second << "\\";
-	data.returnVector.clear();
+		std::cout << data.returnVector[i].first.first << "  " << data.returnVector[i].second << "\\";
 	std::cout << "word 3" << std::endl;
-	data.search(word, s3, 0, 0);
-	data.search(word, s3, 5, 0);
-	data.search(word, s3, 8, 1);
-	data.search(word, s3, 11, 1);
+	search(s3, word);
 	for (int i = 0; i < data.returnVector.size(); ++i)
-		std::cout << data.returnVector[i].first << " " << data.returnVector[i].second << "\\";
-	data.returnVector.clear();
+		std::cout << data.returnVector[i].first.first << "  " << data.returnVector[i].second << "\\";
 	std::cout << "word 4" << std::endl;
-	data.search(word, s4, 0, 0);
+	search(s4, word);
 	for (int i = 0; i < data.returnVector.size(); ++i)
-		std::cout << data.returnVector[i].first << " " << data.returnVector[i].second << "\\";
-	data.returnVector.clear();
+		std::cout << data.returnVector[i].first.first << "  " << data.returnVector[i].second << "\\";
 }
 
 dictionary::~dictionary()

@@ -94,7 +94,7 @@ void GADDAG::select(node *myroot, std::string word,std::string board, int start,
 		{
 			int z = findInVector(myroot->pointers, 'E');
 			if (z > 0)
-				this->returnVector.push_back({ newWord,first });
+				this->returnVector.push_back({ {newWord,word},first });
 		}
 		return;
 	}
@@ -134,11 +134,12 @@ void GADDAG::select(node *myroot, std::string word,std::string board, int start,
 			{
 				int z = findInVector(myroot->pointers, 'E');
 				if (z>0)
-					this->returnVector.push_back({ newWord,first });
+					this->returnVector.push_back({ {newWord,word},first });
 			}
 			//if you're moving forword you have to continue move forword
 			for (int i = 0; i < word.length(); ++i)
 			{
+				if (i == 0 || word[i - 1] != word[i])
 				if (word[i] == 'E')
 				{
 					for (int j = 97; j < 123; ++j)
@@ -171,6 +172,7 @@ void GADDAG::select(node *myroot, std::string word,std::string board, int start,
 			//if you're at the moving backword you can reverse or continue backword
 			for (int i = 0; i < word.length(); ++i)
 			{//continue backword if possible
+				if ( i==0||word[i - 1] != word[i])
 				if (word[i] == 'E')
 				{
 					for (int j = 97; j < 123; ++j)
