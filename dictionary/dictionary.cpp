@@ -34,6 +34,7 @@ void dictionary::search(std::string board, std::string word)
 			}
 	}
 }
+
 void dictionary::search(std::string board, std::string word,int index)
 {
 	data.returnVector.clear();
@@ -56,11 +57,15 @@ void dictionary::search(std::string board, std::string word,int index)
 void dictionary::test()
 {
 
-	std::string s1, s2, s3, s4,word="vE";
-	s1 = "  all  load a b ";
+	std::string s1, s2, s3, s4,word="EEEE";
+	s1 = "  all  loa    a b ";
 	s2 = " all a  a  ca  ";
 	s3 = "all  ";
 	s4 = "a";
+	/*this->data.search("alEEEEE");
+	for (int i = 0; i < data.returnVector.size(); ++i)
+		std::cout << data.returnVector[i].first.first << "  " << std::endl;
+	return;*/
 
 	std::cout << "word 1" << std::endl;
 	search(s1, word);

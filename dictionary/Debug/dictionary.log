@@ -1,8 +1,9 @@
-﻿  GADDAG.cpp
-c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\gaddag.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\gaddag.cpp(49): warning C4018: '>=': signed/unsigned mismatch
-c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\gaddag.cpp(54): warning C4018: '<': signed/unsigned mismatch
-c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\gaddag.cpp(140): warning C4018: '<': signed/unsigned mismatch
-c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\gaddag.cpp(173): warning C4018: '<': signed/unsigned mismatch
+﻿  dictionary.cpp
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\dictionary.cpp(25): warning C4018: '<': signed/unsigned mismatch
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\dictionary.cpp(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\dictionary.cpp(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\dictionary.cpp(76): warning C4018: '<': signed/unsigned mismatch
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\dictionary.cpp(80): warning C4018: '<': signed/unsigned mismatch
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\dictionary.cpp(84): warning C4018: '<': signed/unsigned mismatch
   dictionary.vcxproj -> C:\Users\BAHI\documents\visual studio 2015\Projects\dictionary\Debug\dictionary.exe
   dictionary.vcxproj -> C:\Users\BAHI\documents\visual studio 2015\Projects\dictionary\Debug\dictionary.pdb (Full PDB)

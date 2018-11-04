@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	dictionary d("sowpods.txt");
+	dictionary d("bahi.txt");
 	cout << "start" << endl;
 	d.test();
 	return 0;
