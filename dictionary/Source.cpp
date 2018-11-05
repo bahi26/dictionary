@@ -21,12 +21,17 @@ int get_index_of_ch(string row, string word, int index);
 //global variables
 string player_rack = "";
 dictionary d("sowpods.txt");
+dictionary d("bahi.txt");
 //-------------------------------
 
 
 int main()
 {
+<<<<<<< HEAD
 	//dictionary d("sowpods.txt");
+=======
+	//dictionary d("bahi.txt");
+>>>>>>> 60b6c37e71ee1b056c19767e948902e056e3d055
 	cout << "start" << endl;
 	d.test();
 	return 0;

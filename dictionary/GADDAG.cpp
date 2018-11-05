@@ -78,6 +78,10 @@ void GADDAG::search(std::string word, std::string board, int start, int indicato
 {
 	select(this->root,word,board,start,start,"",indicator,-1,false);
 }
+void GADDAG::search(std::string word)
+{
+	select(this->root, word, "");
+}
 
 void GADDAG::select(node *myroot, std::string word,std::string board, int start, int &globalStart, std::string newWord ,int indicator,int first,bool check)
 {
@@ -145,7 +149,8 @@ void GADDAG::select(node *myroot, std::string word,std::string board, int start,
 					for (int j = 97; j < 123; ++j)
 					{
 						int x = findInVector(myroot->pointers, char(j));
-						if (x > 0)
+						std::size_t found = word.find(char(j));
+						if (x > 0 && found == std::string::npos)
 						{
 							std::string s1 = word;
 							s1.erase(i, 1);
@@ -178,7 +183,8 @@ void GADDAG::select(node *myroot, std::string word,std::string board, int start,
 					for (int j = 97; j < 123; ++j)
 					{
 						int x = findInVector(myroot->pointers, char(j));
-						if (x > 0)
+						std::size_t found = word.find(char(j));
+						if (x > 0 && found == std::string::npos)
 						{
 							std::string s1 = word;
 							s1.erase(i, 1);
@@ -206,6 +212,57 @@ void GADDAG::select(node *myroot, std::string word,std::string board, int start,
 		}
 	}
 }
+
+void GADDAG::select(node *myroot, std::string word,std::string newWord,bool check)
+{
+	if (myroot == nullptr)
+		return;
+	if (word.length() == 6&&!check)
+	{
+		int z = findInVector(myroot->pointers, '>');
+		if(z>-1)
+			select(myroot->pointers[z], word, newWord,true);
+		return;
+	}
+
+	int k = word.length();
+	int z = findInVector(myroot->pointers, 'E');
+	if (z > 0)
+		this->returnVector.push_back({ { newWord,word },0 });
+	if (0 >= k)
+		return;
+
+	for (int i = 0; i < word.length(); ++i)
+	{
+		if (i == 0 || word[i - 1] != word[i])
+			if (word[i] == 'E')
+			{
+				for (int j = 97; j < 123; ++j)
+				{
+					int x = findInVector(myroot->pointers, char(j));
+					std::size_t found = word.find(char(j));
+					if (x > 0&& found == std::string::npos)
+					{
+						std::string s1 = word;
+						s1.erase(i, 1);
+						select(myroot->pointers[x], s1, newWord + char(j));
+					}
+				}
+			}
+			else
+			{
+				int x = findInVector(myroot->pointers, word[i]);
+				if (x > 0)
+				{
+					std::string s1 = word;
+					s1.erase(i, 1);
+					select(myroot->pointers[x], s1, newWord + word[i]);
+				}
+			}
+	}
+
+}
+
 
 void GADDAG::check(node *myroot)
 {
