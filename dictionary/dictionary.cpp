@@ -54,6 +54,10 @@ void dictionary::search(std::string board, std::string word,int index)
 		}
 	}
 }
+bool dictionary::check(std::string word)
+{
+	return this->data.check(this->data.root, word);
+}
 void dictionary::test()
 {
 

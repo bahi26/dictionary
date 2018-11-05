@@ -33,6 +33,7 @@ public:
 	void search(std::string word);
 	void select(node *myroot,std::string word,std::string board, int start,int &golbalStart,std::string newWord,int indicator,int first,bool check);
 	void select(node *myroot, std::string word,std::string newWord,bool check=false);
+	bool check(node *myroot, std::string word, int c = 0);
 	void deleteNodes(node* root);
 	void check(node *myroot);
 
