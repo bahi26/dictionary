@@ -11,8 +11,8 @@ class dictionary
 public:
 	dictionary();
 	dictionary(std::string filename);
-	void search(std::string board,std::string rack);
-	void search(std::string board, std::string rack,int index);
+	void search(std::string row_coulmn,std::string rack);
+	void search(std::string row_coulmn, std::string rack,int index);
 	void test(); 
 	vector<pair<pair<string, string>, int>> get_return_vector();
 	~dictionary();

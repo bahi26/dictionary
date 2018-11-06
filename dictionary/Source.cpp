@@ -8,30 +8,24 @@ using namespace std;
 struct word {
 	string word = "";
 	string rack = "";
-	pair<int, int> location;
-	int directionn;  //   0= right  1=left    2= up      3=down
-
+	pair<int, int> location; //(y,x) ==(row,column)
+	int direction;  //   0= horizontal  1=vertical
 };
 //prototypes
 void divide_the_board(int board[15][15], string rack);
-int get_index_of_ch(string row, string word, int index);
+pair<int, char>  get_index_of_ch(string row, string word, int index);
 //--------------------------------
 
 
 //global variables
 string player_rack = "";
-dictionary d("sowpods.txt");
 dictionary d("bahi.txt");
 //-------------------------------
 
 
 int main()
 {
-<<<<<<< HEAD
-	//dictionary d("sowpods.txt");
-=======
-	//dictionary d("bahi.txt");
->>>>>>> 60b6c37e71ee1b056c19767e948902e056e3d055
+
 	cout << "start" << endl;
 	d.test();
 	return 0;
@@ -71,42 +65,90 @@ void divide_the_board(int board[15][15], string rack)
 	
 	vector <word> resulted_vector_of_words;
 	vector<pair<pair<string, string>, int>> returnVector;
-	// sending rows and coulmns to be searched
+
+
+	// sending rows to get possible words
 	int return_vec_size;
+
 	for (int ir = 0; ir < 15; ++ir) {
 		d.search(board_rows[ir], rack);
 		returnVector = d.get_return_vector;
 		return_vec_size=returnVector.size();
+		word temp_w;
+		//loop over possible words
 		for (int r = 0; r < return_vec_size;++r) {
 			if ((rack.length() - returnVector[r].first.second.length()) == 1) {
-				int index=get_index_of_ch(board_rows[ir],returnVector[ir].first.first, returnVector[r].second);
-				d.search(board_rows[ir],rack, index);
-				
-
-
+				pair<int,char> index=get_index_of_ch(board_rows[ir],returnVector[ir].first.first, returnVector[r].second);
+				string temp= board_cols[index.first];
+				temp[ir] = index.second;
+				d.search(temp,rack, ir);
+				for (int m = 0; m < d.get_return_vector.size(); ++m) {
+					
+					temp_w.word = d.get_return_vector[m].first.first;
+					temp_w.rack = d.get_return_vector[m].first.second;
+					temp_w.location = make_pair(ir, index.first);
+					temp_w.direction = 1;
+					resulted_vector_of_words.push_back(temp_w);
+				}
 			}
+			temp_w.word = returnVector[r].first.first;
+			temp_w.rack = returnVector[r].first.second;
+			temp_w.location = make_pair(ir, returnVector[r].second);
+			temp_w.direction = 0;
+			resulted_vector_of_words.push_back(temp_w);
 		}
-	
 	}
 
+	// sending columns to get possible words
+
+
+	for (int ic = 0; ic < 15; ++ic) {
+		d.search(board_cols[ic], rack);
+		returnVector = d.get_return_vector;
+		return_vec_size = returnVector.size();
+		word temp_w;
+		//loop over possible words
+		for (int k = 0; k < return_vec_size; ++k) {
+			if ((rack.length() - returnVector[k].first.second.length()) == 1) {
+				pair<int, char> index = get_index_of_ch(board_rows[ic], returnVector[ic].first.first, returnVector[ic].second);
+				string temp= board_rows[index.first];
+				temp[ic] = index.second;
+				d.search(temp, rack, ic);
+				for (int m = 0; m < d.get_return_vector.size(); ++m) {
+
+					temp_w.word = d.get_return_vector[m].first.first;
+					temp_w.rack = d.get_return_vector[m].first.second;
+					temp_w.location = make_pair(index.first, ic);
+					temp_w.direction = 1;
+					resulted_vector_of_words.push_back(temp_w);
+				}
+			}
+			temp_w.word = returnVector[k].first.first;
+			temp_w.rack = returnVector[k].first.second;
+			temp_w.location = make_pair(returnVector[k].second, ic);
+			temp_w.direction = 1;
+			resulted_vector_of_words.push_back(temp_w);
+		}
+	}
 
 
 }
 
 
-int get_index_of_ch(string row, string word, int index) {
+pair<int, char>  get_index_of_ch(string row, string word, int index) {
 
-	
+	pair<int, char> temp = make_pair(index, ' ');
 	int u = 0;
 	while (index < 15) {
 		if (row[index] != word[u]) {
-			
-			return index;
+			temp.first = index;
+			temp.second = word[u];
+			return temp;
 
 		}
 		
 			++index; ++u;
 	}
 
-	return index;
+	return temp;
 }
