@@ -19,15 +19,17 @@ pair<int, char>  get_index_of_ch(string row, string word, int index);
 
 //global variables
 string player_rack = "";
-dictionary d("bahi.txt");
+	dictionary d("sowpods.txt");
 //-------------------------------
 
 
 int main()
 {
 
+	//dictionary d("sowpods.txt");
+
 	cout << "start" << endl;
-	d.test();
+	cout<<d.check("l")<<endl;
 	return 0;
 }
 

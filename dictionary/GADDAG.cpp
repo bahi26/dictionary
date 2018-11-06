@@ -262,7 +262,39 @@ void GADDAG::select(node *myroot, std::string word,std::string newWord,bool chec
 	}
 
 }
+bool GADDAG::check(node *myroot, std::string word, int c)
+{
+	if (myroot == nullptr)
+		return false;
+	if (c==1)
+	{
+		int z = findInVector(myroot->pointers, '>');
+		if (z>-1)
+			return check(myroot->pointers[z], word, 2);
+		else
+			return false;
+	}
 
+	int k = word.length();
+	if (0 >= k)
+	{
+		int z = findInVector(myroot->pointers, 'E');
+		if (z > 0)
+			return true;
+		else
+			return false;
+	}
+
+	int x = findInVector(myroot->pointers, word[0]);
+	if (x > 0)
+	{
+		std::string s1 = word;
+		s1.erase(0, 1);
+		return check(myroot->pointers[x], s1, c+1);
+	}
+	else 
+		return false;
+}
 
 void GADDAG::check(node *myroot)
 {
