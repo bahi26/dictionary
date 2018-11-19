@@ -107,6 +107,9 @@ void dictionary::test()
 	for (int i = 0; i < data.returnVector.size(); ++i)
 		std::cout << data.returnVector[i].first.first << "  " << data.returnVector[i].second << "\\";
 }
+vector<pair<pair<string, string>, int>>dictionary:: get_return_vector() {
+	return data.returnVector;
+}
 
 dictionary::~dictionary()
 {
