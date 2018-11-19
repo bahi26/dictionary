@@ -12,6 +12,7 @@ public:
 	void search(std::string board,std::string word);
 	void search(std::string board, std::string word,int index);
 	bool check(std::string word);
+	bool selectAll(std::string word);
 	void test();
 	~dictionary();
 	

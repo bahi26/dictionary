@@ -18,8 +18,13 @@ dictionary::dictionary(std::string filename)
 	}
 	
 }
+
+//inserting a word into an array given a line and a word
 void dictionary::search(std::string board, std::string word)
 {
+	std::sort(word.begin(), word.end());
+	reverse(word.begin(), word.end());
+
 	data.returnVector.clear();
 	int num = 1;
 	for (int i = 0; i < board.size(); ++i)
@@ -35,8 +40,11 @@ void dictionary::search(std::string board, std::string word)
 	}
 }
 
+//inserting a word into an array given a line and a word and the index where you should start
 void dictionary::search(std::string board, std::string word,int index)
 {
+	std::sort(word.begin(), word.end());
+	reverse(word.begin(), word.end());
 	data.returnVector.clear();
 	int num = 1;
 	for (int i = 0; i < board.size(); ++i)
@@ -54,10 +62,21 @@ void dictionary::search(std::string board, std::string word,int index)
 		}
 	}
 }
+
+//checks if a word exists in an array
 bool dictionary::check(std::string word)
 {
+	std::sort(word.begin(), word.end());
+	reverse(word.begin(), word.end());
 	return this->data.check(this->data.root, word);
 }
+
+bool dictionary::selectAll(std::string word)
+{
+	this->data.search(word);
+}
+
+//never mind it's just for test :D
 void dictionary::test()
 {
 

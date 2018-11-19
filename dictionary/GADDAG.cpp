@@ -80,6 +80,10 @@ void GADDAG::search(std::string word, std::string board, int start, int indicato
 }
 void GADDAG::search(std::string word)
 {
+	for (int i = word.length(); i < 7; ++i)
+		word += "E";
+	std::sort(word.begin(), word.end());
+	reverse(word.begin(), word.end());
 	select(this->root, word, "");
 }
 
