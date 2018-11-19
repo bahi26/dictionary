@@ -66,8 +66,6 @@ void dictionary::search(std::string board, std::string word,int index)
 //checks if a word exists in an array
 bool dictionary::check(std::string word)
 {
-	std::sort(word.begin(), word.end());
-	reverse(word.begin(), word.end());
 	return this->data.check(this->data.root, word);
 }
 
