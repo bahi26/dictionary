@@ -38,12 +38,12 @@ input: 1) 2d array of integers representing the board a (0) -> z (25) and blank 
 2) arrary oef integers representing rack of player
 returns vector of of strings of 15 rows and 15 coulmns
 empty letter =" " space      eg: "star   computer"
-*/
+
 void divide_the_board(int board[15][15], string rack)
 {
 
 	// sorting on rack letters
-	sort(rack.begin(), rack.end());
+
 
 	vector <string> board_rows(15, "");
 	vector <string> board_cols(15, "");
@@ -153,4 +153,4 @@ pair<int, char>  get_index_of_ch(string row, string word, int index) {
 	}
 
 	return temp;
-}
+}*/

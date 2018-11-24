@@ -105,9 +105,53 @@ void dictionary::test()
 	for (int i = 0; i < data.returnVector.size(); ++i)
 		std::cout << data.returnVector[i].first.first << "  " << data.returnVector[i].second << "\\";
 }
-vector<pair<pair<string, string>, int>>dictionary:: get_return_vector() {
-	return data.returnVector;
+//cast int[][] to char[][]
+vector<string> dictionary::cast(int board[15][15])
+{
+	vector<string> rvec;
+	for (int i = 0; i < 15; ++i)
+	{
+		string s;
+		for (int j = 0; i < 15; ++j)
+		{
+			if (board[i][j] == 0)
+				s += ' ';
+			else
+				s +=(char) board[i][j] + 97;
+		}
+		rvec.push_back(s);
+	}
+	return rvec;
 }
+//vector<pair<pair<string, string>, int>>
+//execute
+void dictionary::execute(int board[15][15],string rack)
+{
+	//get columns
+	int cols[15][15];
+	for (int i = 0; i < 15; ++i)
+	{
+		for (int j = 0; j < 15; ++j)
+		{
+			cols[i][j] = board[j][i];
+		}
+	}
+	vector<string> col = this->cast(cols);
+	vector<string> rows = this->cast(board);
+	
+	for (int i = 0; i < 15; ++i)
+	{
+		this->search(col[i], rack);
+		for (int j = 0; j < data.returnVector.size(); ++j)
+			returnVec.push_back(Move(i,data.returnVector[j].second,false,data.returnVector[j].first.first,data.returnVector[j].first.second));
+
+		this->search(rows[i], rack);
+		for (int j = 0; j < data.returnVector.size(); ++j)
+			returnVec.push_back(Move(data.returnVector[j].second,i,true, data.returnVector[j].first.first, data.returnVector[j].first.second));
+	}
+}
+
+
 
 dictionary::~dictionary()
 {
