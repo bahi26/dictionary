@@ -1,0 +1,8 @@
+﻿  dictionary.cpp
+e:\github\dictionary\dictionary\dictionary.cpp(173): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+e:\github\dictionary\dictionary\dictionary.cpp(207): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Source.cpp
+  dictionary.vcxproj -> E:\GitHub\dictionary\x64\Debug\dictionary.exe
+  dictionary.vcxproj -> E:\GitHub\dictionary\x64\Debug\dictionary.pdb (Full PDB)

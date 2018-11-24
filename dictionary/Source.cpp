@@ -5,33 +5,18 @@
 #include "dictionary.h"
 
 using namespace std;
-struct word {
-	string word = "";
-	string rack = "";
-	pair<int, int> location; //(y,x) ==(row,column)
-	int direction;  //   0= horizontal  1=vertical
-};
-//prototypes
-void divide_the_board(int board[15][15], string rack);
-pair<int, char>  get_index_of_ch(string row, string word, int index);
-//--------------------------------
 
-
-//global variables
-string player_rack = "";
-	dictionary d("sowpods.txt");
-//-------------------------------
 
 
 int main()
 {
-
-	//dictionary d("sowpods.txt");
+	dictionary d("sowpods.txt");
 
 	cout << "start" << endl;
 	cout<<d.check("l")<<endl;
 	return 0;
 }
+
 
 /*  divide board into rowa and coulmns
 input: 1) 2d array of integers representing the board a (0) -> z (25) and blank square (-1) board
@@ -154,3 +139,6 @@ pair<int, char>  get_index_of_ch(string row, string word, int index) {
 
 	return temp;
 }*/
+
+
+

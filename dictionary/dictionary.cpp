@@ -69,7 +69,7 @@ bool dictionary::check(std::string word)
 	return this->data.check(this->data.root, word);
 }
 
-bool dictionary::selectAll(std::string word)
+void dictionary::selectAll(std::string word)
 {
 	this->data.search(word);
 }
@@ -150,6 +150,12 @@ void dictionary::execute(int board[15][15],string rack)
 			returnVec.push_back(Move(data.returnVector[j].second,i,true, data.returnVector[j].first.first, data.returnVector[j].first.second));
 	}
 }
+
+
+
+
+
+
 
 
 
