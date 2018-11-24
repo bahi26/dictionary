@@ -78,6 +78,7 @@ void GADDAG::search(std::string word, std::string board, int start, int indicato
 {
 	select(this->root,word,board,start,start,"",indicator,-1,false);
 }
+
 void GADDAG::search(std::string word)
 {
 	for (int i = word.length(); i < 7; ++i)
