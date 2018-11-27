@@ -1,3 +1,6 @@
 ﻿  Source.cpp
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\source.cpp(23): warning C4018: '<': signed/unsigned mismatch
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\source.cpp(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\bahi\documents\visual studio 2015\projects\dictionary\dictionary\source.cpp(51): warning C4018: '<': signed/unsigned mismatch
   dictionary.vcxproj -> C:\Users\BAHI\documents\visual studio 2015\Projects\dictionary\Debug\dictionary.exe
   dictionary.vcxproj -> C:\Users\BAHI\documents\visual studio 2015\Projects\dictionary\Debug\dictionary.pdb (Full PDB)

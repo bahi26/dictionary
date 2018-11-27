@@ -6,17 +6,69 @@
 
 using namespace std;
 
+void yasmine()
+{
+	string s1, s2;
+	s2 = "y";;
+	vector<string>test;
+	s1 = "sowpods.txt";
+
+	GADDAG d = GADDAG();
+	std::ifstream myfile(s1);
+	std::string line;
+
+	while (std::getline(myfile, line))
+	{
+		d.insertWord(line);
+		for (int i = 0; i < s2.length(); ++i)
+		{
+			size_t found = line.find(s2[i]);
+			if (found != string::npos && line.size()<=7)
+			{
+				test.push_back(line);
+				break;
+			}
+		}
+	}
+
+	sort(test.begin(), test.end());
+	d.search(s2);
+
+	sort(d.y.begin(), d.y.end());
+	vector<string> vec;
+	for (int i = 0; i < d.y.size() - 1; ++i)
+		if (d.y[i] != d.y[i + 1])
+			vec.push_back(d.y[i]);
+	if (vec[vec.size() - 1] != d.y[d.y.size() - 1])
+		vec.push_back(d.y[d.y.size() - 1]);
+	//EXPECT_EQ(test.size(), vec.size());
+	if (test.size() != vec.size())
+	{
+		cout << test.size() << endl << vec.size()<<endl;
+		return ;
+	}
+	
+	for (int i = 0; i < vec.size(); i++)
+	{
+		if (test[i] != vec[i])
+		{
+			cout << test[i] << endl << vec[i] << endl;
+			return;
+		}
+	}
+}
 
 
 int main()
 {
-	dictionary d("sowpods.txt");
+/*	dictionary d("sowpods.txt");
 
 	cout << "start" << endl;
 	cout<<d.check("l")<<endl;
+	*/
+	yasmine();
 	return 0;
 }
-
 
 /*  divide board into rowa and coulmns
 input: 1) 2d array of integers representing the board a (0) -> z (25) and blank square (-1) board
